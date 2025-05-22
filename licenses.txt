@@ -1,0 +1,4 @@
+Logos used in this project:
+
+- Visa, MasterCard, American Express, Discover, Maestro, JCB, MIR icons were taken from https://simpleicons.org/
+  License: CC0 1.0 Universal (https://creativecommons.org/publicdomain/zero/1.0/)
