@@ -2,7 +2,7 @@ export const cards = [
   { name: "visa", start: [4], cardlength: [13, 16, 19] },
   {
     name: "mastercard",
-    start: [2221, 2720, 5479, 5354, 5517, 51],
+    start: [2221, 2720, 5479, 5354, 5517, 51, 53],
     cardlength: [16],
   },
   { name: "americanexpress", start: [34, 37], cardlength: [15] },
