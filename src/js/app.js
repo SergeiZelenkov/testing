@@ -1,70 +1,33 @@
-function check(code) {
-  let sum = 0;
-  let parity = code.length % 2;
-  for (let i = 0; i < code.length; i++) {
-    let digit = parseInt(code[i]);
-    if (i % 2 === parity) digit *= 2;
-    if (digit > 9) digit -= 9;
-    sum += digit;
-  }
-  return sum % 10 === 0;
-}
+import isValidCard from "./isValidCard.js";
+import detectCardType from "./detectCardType.js";
 
-const cards = [
-  { name: "visa", start: [4], cardlength: [13, 16, 19] },
-  { name: "mastercard", start: [2221, 51, 2720], cardlength: [16] },
-  { name: "americanexpress", start: [34, 37], cardlength: [15] },
-  {
-    name: "maestro",
-    start: [5020, 5018],
-    cardlength: [12, 13, 14, 15, 16, 17, 18, 19],
-  },
-  { name: "discover", start: [6011], cardlength: [16, 17, 18, 19] },
-];
-
-const button = document.querySelector(".pay-button");
-const input = document.querySelector(".pay-input");
-const cardImages = document.querySelectorAll(".pay-card");
-
-function detectCardType(inputValue) {
-  for (let card of cards) {
-    if (!card.cardlength.includes(inputValue.length)) continue;
-    for (let prefix of card.start) {
-      const prefixStr = prefix.toString();
-      if (inputValue.startsWith(prefixStr)) {
-        return card.name;
+export default function appInit() {
+  const button = document.querySelector(".pay-button");
+  const input = document.querySelector(".pay-input");
+  const cardImages = document.querySelectorAll(".pay-card");
+  const valid = document.querySelector(".valid");
+  function highlightCard(cardType) {
+    cardImages.forEach((img) => {
+      if (img.alt === cardType) {
+        img.classList.add("activ");
+        valid.innerHTML = cardType;
+      } else {
+        img.classList.remove("activ");
       }
-    }
+    });
   }
-  return null;
-}
 
-function highlightCard(cardType) {
-  cardImages.forEach((img) => {
-    if (img.alt.toLowerCase().replace(/\s/g, "") === cardType) {
-      img.classList.add("activ");
-    } else {
-      img.classList.remove("activ");
+  button.addEventListener("click", () => {
+    const value = input.value.trim();
+
+    if (!isValidCard(value)) {
+      cardImages.forEach((img) => img.classList.remove("activ"));
+      valid.innerHTML = "";
+      alert("Некорректный номер карты");
+      return;
     }
+
+    const cardType = detectCardType(value);
+    highlightCard(cardType);
   });
 }
-
-function isValidCard(inputValue) {
-  if (!/^\d+$/.test(inputValue)) return false;
-
-  const cardType = detectCardType(inputValue);
-  if (!cardType) return false;
-  if (!check(inputValue)) return false;
-
-  highlightCard(cardType);
-  return true;
-}
-
-button.addEventListener("click", () => {
-  const value = input.value.trim();
-  const isValid = isValidCard(value);
-  if (!isValid) {
-    cardImages.forEach((img) => img.classList.remove("activ"));
-    alert("Некорректный номер карты");
-  }
-});

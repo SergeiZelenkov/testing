@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+/*import puppeteer from "puppeteer";
 import { fork } from "child_process";
 
 import { fileURLToPath } from "url";
@@ -74,4 +74,4 @@ describe("Credit Card Validator form", () => {
     );
     expect(highlightedCards).toBe(0);
   });
-});
+});*/

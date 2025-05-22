@@ -21,9 +21,6 @@
     "lint": "eslint ./src --ext .js"
   },
   "dependencies": {
-    "@babel/core": "^7.27.1",
-    "@babel/preset-env": "^7.27.2",
-    "babel-jest": "^29.7.0",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "core-js": "^3.42.0",
@@ -38,6 +35,9 @@
     "webpack-dev-server": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-jest": "^29.7.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
     "eslint-config-airbnb-base": "^15.0.0",

@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   target: "web",
@@ -43,6 +44,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css", // Имя CSS файла
       chunkFilename: "[id].css", // Имя для чанков
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/assets/cards", to: "assets/cards" },
+        { from: "licenses.txt", to: "." }, // копируем в корень сайта
+      ],
     }),
   ],
 };

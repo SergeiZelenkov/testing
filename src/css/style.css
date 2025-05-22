@@ -1,7 +1,7 @@
 .pay {
   margin: 0 auto;
   width: 500px;
-  height: 100px;
+  height: 120px;
   border: 1px solid;
   text-align: center;
   padding-top: 20px;
@@ -9,7 +9,8 @@
 }
 
 .pay-card {
-  width: 53px;
+  width: 43px;
+  height: 30px;
   opacity: 0.2;
 }
 
@@ -19,6 +20,7 @@
 
 .pay-input {
   height: 40px;
+  width: 200px;
   box-sizing: border-box;
   box-shadow: 0px 0px 1px rgb(0, 0, 0);
   border: none;
@@ -33,4 +35,10 @@
   border-radius: 3px;
   color: rgb(255, 255, 255);
   font-weight: bold;
+}
+
+.valid {
+  color: rgb(0, 205, 150);
+  font-weight: bold;
+  text-transform: uppercase;
 }
